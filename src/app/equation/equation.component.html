@@ -1,0 +1,14 @@
+<form [formGroup]="matchForm">
+  {{a}} + {{b}} =
+  <input
+    #answer
+    [ngClass]="{highlight:highlightValidation(a,b,answer.value)}"
+    type="number"
+    formControlName="answer">
+</form>
+correct : {{correct}}
+<br>
+secondPerSolution : {{secondPerSolution}}
+<!--<div class="">form is valid : {{matchForm.valid}}</div>-->
+<!--<div class="">form is value : {{matchForm.value | json}}</div>-->
+<!--<div class="">form group errors : {{matchForm.errors | json}}</div>-->
