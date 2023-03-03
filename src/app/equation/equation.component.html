@@ -1,8 +1,14 @@
 <form [formGroup]="matchForm">
-  {{a}} + {{b}} =
+<!--  {{a}} + {{b}} =
   <input
     #answer
     [ngClass]="{highlight:highlightValidation(a,b,answer.value)}"
+    type="number"
+    formControlName="answer">-->
+  {{a}} + {{b}} =
+  <input
+    #answer
+
     type="number"
     formControlName="answer">
 </form>

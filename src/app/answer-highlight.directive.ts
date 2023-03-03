@@ -1,15 +1,30 @@
 import {Directive, ElementRef, OnInit} from '@angular/core';
 import {NgControl} from "@angular/forms";
+import {map} from "rxjs/operators";
 
 @Directive({
   selector: '[appAnswerHighlight]'
 })
-export class AnswerHighlightDirective implements OnInit{
+export class AnswerHighlightDirective implements OnInit {
 
-  constructor(private elRef:ElementRef,private controlName:NgControl) { }
+  constructor(private elRef: ElementRef, private controlName: NgControl) {
+  }
 
   ngOnInit(): void {
-    console.log(this.controlName.control?.parent?.controls)
+    this.controlName.control?.parent?.valueChanges
+      .pipe(
+        map(({a, b, answer}) => {
+          return Math.abs((a + b - answer) / (a + b));
+        })
+      )
+      .subscribe(
+        (val) => {
+         if(val<0.2){
+           this.elRef.nativeElement.classList.add('highlight');
+         }else{
+           this.elRef.nativeElement.classList.remove('highlight');
+         }
+        })
   }
 
 }

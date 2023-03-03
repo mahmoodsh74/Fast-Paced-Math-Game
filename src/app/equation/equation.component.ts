@@ -69,7 +69,7 @@ export class EquationComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
-  highlightValidation(numberOne: any, numberTwo: any, answer: any) {
+  highlightValidation(numberOne: number, numberTwo: number, answer: number) {
 if(numberOne+numberTwo*0.8<answer){
   return true;
 }
